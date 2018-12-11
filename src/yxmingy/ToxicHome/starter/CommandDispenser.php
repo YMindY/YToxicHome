@@ -1,5 +1,7 @@
 <?php
 namespace yxmingy\ToxicHome\starter;
+use pocketmine\command\
+{Command,CommandSender};
 abstract class CommandDispenser extends ListenerManager
 {
   protected static $cmdList = //"cmd"=>"class"
@@ -12,5 +14,9 @@ abstract class CommandDispenser extends ListenerManager
     {
       self::$executers[$cmd] = new $cls();
     }
+  }
+  public function onCommand(CommandSender $sender, Command $command, $label, array $args):bool
+  {
+    
   }
 }
