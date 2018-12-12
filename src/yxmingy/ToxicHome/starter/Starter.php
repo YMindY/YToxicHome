@@ -1,7 +1,7 @@
 <?php
 namespace yxmingy\ToxicHome\starter;
 use pocketmine\Server;
-abstract class Starter extends ListenerManager
+abstract class Starter extends CommandDispenser
 {
   protected static $instance;
   //这个一定要在主类执行

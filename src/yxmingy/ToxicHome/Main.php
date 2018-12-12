@@ -14,10 +14,12 @@ class Main extends starter\Starter
   public function onLoad()
   {
     self::assignInstance();
+    self::dispenseExecutors();
     self::info("[YToxicHome] is Loading...");
   }
   public function onEnable()
   {
+    self::registerListeners();
     self::notice("[YToxicHome] is Enabled by xMing!");
   }
   public function onDisable()
