@@ -4,7 +4,7 @@ use pocketmine\command\
 {Command,CommandSender};
 abstract class CommandDispenser extends ListenerManager
 {
-  const MAIN_CMD = "home";
+  const MAIN_CMD = "hs";
   protected static $cmdList = //"cmd"=>"class"
   [
   "a"=>a::class
@@ -26,14 +26,15 @@ abstract class CommandDispenser extends ListenerManager
   }
   public function onCommand(CommandSender $sender, Command $command, $label, array $args):bool
   {
-    if($command->getName() != MAIN_CMD) return false;
-    $exers = array_keys($executors);
-    foreach($executors as $cmd=>$exer)
+    if($command->getName() != self::MAIN_CMD) return false;
+    if(!isset($args[0])) return false;
+    foreach(self::$executors as $cmd=>$exer)
     {
       if($args[0] == $cmd)
       {
         return ($exer->handleCommand(array_slice($args,1),$sender));
       }
     }
+    return false;
   }
 }

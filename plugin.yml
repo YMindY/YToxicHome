@@ -5,4 +5,11 @@ api:
 version: '1.0.0_alpha'
 load: POSTWORLD
 main: yxmingy\ToxicHome\Main
-author: xMing
+author: xMingcommands:
+  hs:
+    description: "家园系统主指令"
+    permission: yxmingy.hs.command
+    usage: "/hs [obj]"
+permissions:
+  yxmingy.hs.command: 
+    default: op
