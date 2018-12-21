@@ -2,12 +2,14 @@
 namespace yxmingy\ToxicHome\starter;
 use pocketmine\command\
 {Command,CommandSender};
+use yxmingy\ToxicHome\store\HomeStore;
 abstract class CommandDispenser extends ListenerManager
 {
   const MAIN_CMD = "hs";
   protected static $cmdList = //"cmd"=>"class"
   [
-  "a"=>a::class
+  "a"=>a::class,
+  "store"=>HomeStore::class,
   ];
   protected static $executors = [];
   protected static function dispenseExecutors():void

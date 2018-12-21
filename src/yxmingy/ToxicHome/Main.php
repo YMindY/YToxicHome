@@ -19,7 +19,9 @@ class Main extends starter\Starter
   }
   public function onEnable()
   {
-    self::registerListeners();
+    @mkdir($this->getDataFolder());
+    self::dispenseExecutors();
+    generator\GeneratorManager::registerGenerators();
     self::notice("[YToxicHome] is Enabled by xMing!");
   }
   public function onDisable()

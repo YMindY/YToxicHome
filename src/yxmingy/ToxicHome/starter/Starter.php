@@ -5,9 +5,13 @@ abstract class Starter extends CommandDispenser
 {
   protected static $instance;
   //这个一定要在主类执行
-  protected function assignInstance()
+  protected function assignInstance():void
   {
     self::$instance=$this;
+  }
+  public static function getInstance():?object
+  {
+    return self::$instance;
   }
   public static function info(string $message):void
   {
