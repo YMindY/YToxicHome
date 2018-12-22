@@ -19,6 +19,7 @@ class Main extends starter\Starter
   }
   public function onEnable()
   {
+    store\HomeStore::init();
     @mkdir($this->getDataFolder());
     self::dispenseExecutors();
     generator\GeneratorManager::registerGenerators();

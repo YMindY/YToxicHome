@@ -10,8 +10,8 @@ class HomeStore
   {
     self::$conf = new Config(Main::getInstance()->getDataFolder()."/store.yml",Config::YAML,array("初级世界售价"=>2000,"一级世界售价"=>5000,"二级世界售价"=>10000,"三级世界售价"=>20000));
   }
-  public static function getConfig():?Config
+  public static function getConfig():array
   {
-    return self::$conf;
+    return isset(self::$conf) ? self::$conf->getAll() : array();
   }
 }
