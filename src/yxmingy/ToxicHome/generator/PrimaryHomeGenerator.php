@@ -1,7 +1,7 @@
 <?php
 namespace yxmingy\ToxicHome\generator;
 use pocketmine\math\Vector3;
-use pocketmine\level\generator\VoidGenerator;
+//use pocketmine\level\generator\VoidGenerator;
 class PrimaryHomeGenerator extends VoidGenerator
 {
   public function getSpawn() : Vector3{
