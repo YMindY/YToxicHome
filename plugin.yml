@@ -9,7 +9,7 @@ author: xMingcommands:
   hs:
     description: "家园系统主指令"
     permission: yxmingy.hs.command
-    usage: "/hs [obj]"
+    usage: "使用[/hs help]获取帮助"
 permissions:
   yxmingy.hs.command: 
     default: op
