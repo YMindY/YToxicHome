@@ -5,7 +5,7 @@ use pocketmine\event\player\
 {PlayerJoinEvent,PlayerQuitEvent};
 class HomeManager implements Listener
 {
-  private static function $conf;
+  private static $conf;
   public function __construct()
   {
     self::$conf = Main::getInstance()->getDataFolder()."/homes/";
@@ -22,7 +22,7 @@ class HomeManager implements Listener
   {
     
   }
-  public function onPlayerQuit(Player QuitEvent $event):void
+  public function onPlayerQuit(PlayerQuitEvent $event):void
   {
     
   }

@@ -6,6 +6,7 @@ use pocketmine\event\Listener;
 use yxmingy\ToxicHome\HomeManager;
 abstract class ListenerManager extends PluginBase
 {
+  protected static $instance;
   protected static $namelist = 
   [
   "HomeManager"=>HomeManager::class,

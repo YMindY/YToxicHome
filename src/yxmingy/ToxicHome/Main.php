@@ -21,7 +21,7 @@ class Main extends starter\Starter
   {
     store\HomeStore::init();
     @mkdir($this->getDataFolder());
-    self::dispenseExecutors();
+    self::registerListeners();
     generator\GeneratorManager::registerGenerators();
     self::notice("[YToxicHome] is Enabled by xMing!");
   }
