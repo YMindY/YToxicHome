@@ -34,6 +34,7 @@ class BuyCommand implements CommandExecutor
       $grass = Block::get(Block::GRASS);
       $size = HomeStore::getConfig()[$args[0]."级世界"]["大小"];
       $asize = 1;//anglesize
+      /*
       for($fx=-$asize;$fx<=$asize;$fx++)
       {
         for($fz=-$asize;$fz<=$asize;$fz++)
@@ -47,12 +48,14 @@ class BuyCommand implements CommandExecutor
             }
           }
           var_dump("$fx $fz");
+
           //var_dump($level->isChunkLoaded($fx,$fz));
           $level->setBlock(new Vector3($fx,1,$fz),clone $grass);
           var_dump($level->getBlock(new Vector3($fx,1,$fz))->getName());
           //$chunk->setBlock($fx & 0xf, 0, $fz & 0xf, $grass->getId(), $grass->getDamage());
         }
       }
+      */
       $sender->sendMessage("购买成功!");
     }
     return true;

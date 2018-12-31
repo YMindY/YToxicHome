@@ -67,6 +67,7 @@ class VoidGenerator extends Generator {
         $this->level->setChunk($chunkX, $chunkZ, $chunk);
     }
     public function populateChunk(int $chunkX, int $chunkZ) : void{
+      //for()
 	}
 	   public function getSpawn() : Vector3{
         return new Vector3(128, 72, 128);
