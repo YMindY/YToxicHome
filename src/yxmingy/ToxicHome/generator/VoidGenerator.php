@@ -1,5 +1,4 @@
 <?php
-
 /*
  *               _ _
  *         /\   | | |
@@ -19,16 +18,12 @@
  * @link https://github.com/TuranicTeam/Altay
  *
  */
-
 declare(strict_types=1);
-
 namespace yxmingy\ToxicHome\generator;
-
 use pocketmine\block\Block;
 use pocketmine\level\format\Chunk;
 use pocketmine\math\Vector3;
 use pocketmine\level\generator\Generator;
-
 class VoidGenerator extends Generator {
     /** @var Chunk */
     private $chunk;
@@ -36,25 +31,19 @@ class VoidGenerator extends Generator {
     private $options;
     /** @var Chunk */
     private $emptyChunk = null;
-
-
     public function getSettings() : array{
         return [];
     }
-
     public function getName() : string{
         return "Void";
     }
-
     public function __construct(array $settings = []){
         $this->options = $settings;
     }
-
     public function generateChunk(int $chunkX, int $chunkZ) : void{
         if($this->emptyChunk === null){
             $this->chunk = clone $this->level->getChunk($chunkX, $chunkZ);
             $this->chunk->setGenerated();
-
             for($Z = 0; $Z < 16; ++$Z){
                 for($X = 0; $X < 16; ++$X){
                     $this->chunk->setBiomeId($X, $Z, 1);
@@ -63,7 +52,6 @@ class VoidGenerator extends Generator {
                     }
                 }
             }
-
             $spawn = $this->getSpawn();
             if($spawn->getX() >> 4 === $chunkX and $spawn->getZ() >> 4 === $chunkZ){
                 $this->chunk->setBlockId(0, 64, 0, Block::GRASS);
@@ -73,19 +61,14 @@ class VoidGenerator extends Generator {
         }else{
             $this->chunk = clone $this->emptyChunk;
         }
-
         $chunk = clone $this->chunk;
         $chunk->setX($chunkX);
         $chunk->setZ($chunkZ);
         $this->level->setChunk($chunkX, $chunkZ, $chunk);
     }
-
     public function populateChunk(int $chunkX, int $chunkZ) : void{
-
 	}
-
-	public function getSpawn() : Vector3{
+	   public function getSpawn() : Vector3{
         return new Vector3(128, 72, 128);
     }
-
 }

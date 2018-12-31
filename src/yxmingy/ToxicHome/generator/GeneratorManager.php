@@ -2,11 +2,12 @@
 namespace yxmingy\ToxicHome\generator;
 use pocketmine\Server;
 use pocketmine\level\generator\GeneratorManager as GManager;
+use pocketmine\math\Vector3;
 class GeneratorManager
 {
   private static $generators = 
   [
-    "YTHome0"=>PrimaryHomeGenerator::class,
+    "YTHome"=>PrimaryHomeGenerator::class,
   ];
   public static function registerGenerators():void
   {
@@ -19,8 +20,17 @@ class GeneratorManager
   {
     return self::$generators[$name] ?? null;
   }
-  public static function generateLevel(string $name,string $gen):bool
+  public static function generateLevel(string $name):bool
   {
-    return Server::getInstance()->generateLevel("ythome_".$name,null,self::getGenerator("YTHome".$gen));
+    $server = Server::getInstance();
+    $identifier = "ythome_".$name;
+    $status = $server->generateLevel($identifier,null,self::getGenerator("YTHome"));
+    if($status)
+    {
+      $server->loadLevel($identifier);
+      $level = $server->getLevelByName($identifier);
+      $level->setSpawnLocation(new Vector3(0,2,0));
+    }
+    return $status;
   }
 }

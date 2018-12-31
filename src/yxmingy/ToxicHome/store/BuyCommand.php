@@ -27,14 +27,13 @@ class BuyCommand implements CommandExecutor
       $sender->sendMessage("穷鬼，等攒够".$price."再来吧!");
       return true;
     }
-   */ if(GeneratorManager::generateLevel($name,$args[0])){
+   */ if(GeneratorManager::generateLevel($name))
+   {
       $level = Server::getInstance()->getLevelbyName((string)("ythome_".$name));
       //var_dump($level);
-      $level->setSpawnLocation(new Vector3(0,1,0));
       $grass = Block::get(Block::GRASS);
-      $y = 0;
       $size = HomeStore::getConfig()[$args[0]."级世界"]["大小"];
-      $asize = ($size-1)/2;//anglesize
+      $asize = 1;//anglesize
       for($fx=-$asize;$fx<=$asize;$fx++)
       {
         for($fz=-$asize;$fz<=$asize;$fz++)
@@ -42,14 +41,16 @@ class BuyCommand implements CommandExecutor
           if(!$level->isChunkLoaded($fx,$fz))
           {
             $level->loadChunk($fx,$fz);
-            if(($chunk=$level->getChunk($fx,$fz,true)) === null)
+            if(($level->getChunk($fx,$fz,true)) === null)
             {
               $sender->sendMessage("出现无法解决的错误!");
             }
           }
-          var_dump($level->isChunkLoaded($fx,$fz));
-          //$level->setBlock(new Vector3($fx,0,$fz),clone $grass);
-          $chunk->setBlock($fx & 0xf, 0, $fz & 0xf, $grass->getId(), $grass->getDamage());
+          var_dump("$fx $fz");
+          //var_dump($level->isChunkLoaded($fx,$fz));
+          $level->setBlock(new Vector3($fx,1,$fz),clone $grass);
+          var_dump($level->getBlock(new Vector3($fx,1,$fz))->getName());
+          //$chunk->setBlock($fx & 0xf, 0, $fz & 0xf, $grass->getId(), $grass->getDamage());
         }
       }
       $sender->sendMessage("购买成功!");
